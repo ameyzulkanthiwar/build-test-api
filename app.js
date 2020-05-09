@@ -3,20 +3,28 @@ const app = express();
 const mongoose = require("mongoose");
 require("dotenv/config");
 
+// Import Routes
+const userInfoRoute = require("./routes/userInfo");
+// Body parser
+const bodyParser = require("body-parser");
+
 /**
  * Middleware
  * It's a function and it get execute when particular routes are get hit
  * Example: app.use(specify_route, function)
  */
+app.use("/", bodyParser.json()); // Need to parse the body all the time
+
+app.use("/userInfo", userInfoRoute);
 
 // Routes
 app.get("/", (req, res) => {
     res.send("Server just started!");
 });
 
-app.get("/post", (req, res) => {
-    res.send("We are on the post!");
-});
+// app.get("/post", (req, res) => {
+//     res.send("We are on the post!");
+// });
 
 // Connect to MongoDB
 mongoose.connect(
