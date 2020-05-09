@@ -35,3 +35,40 @@ http://localhost:5000/userInfo
 ```
 
 #
+
+## Get by name
+
+```
+http://localhost:5000/userInfo/`name`
+```
+
+#
+
+## Patch (update)
+
+-   Pass parameter for selecting the data set to change
+-   And pass body to update selected data
+
+```
+http://localhost:5000/userInfo/`name`
+
+```
+
+Body
+
+```
+{
+	"name": updated_value,
+	"gender": updated_value,
+	"companyName": updated_value
+}
+```
+
+#
+
+## Delete by name
+
+```
+http://localhost:5000/userInfo/`name`
+
+```
