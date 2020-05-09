@@ -7,12 +7,16 @@ require("dotenv/config");
 const userInfoRoute = require("./routes/userInfo");
 // Body parser
 const bodyParser = require("body-parser");
+// Add the CORS
+const cors = require("cors");
 
 /**
  * Middleware
  * It's a function and it get execute when particular routes are get hit
  * Example: app.use(specify_route, function)
  */
+app.use(cors());
+
 app.use("/", bodyParser.json()); // Need to parse the body all the time
 
 app.use("/userInfo", userInfoRoute);
@@ -21,10 +25,6 @@ app.use("/userInfo", userInfoRoute);
 app.get("/", (req, res) => {
     res.send("Server just started!");
 });
-
-// app.get("/post", (req, res) => {
-//     res.send("We are on the post!");
-// });
 
 // Connect to MongoDB
 mongoose.connect(
